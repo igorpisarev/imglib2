@@ -52,11 +52,11 @@ public class Cell< A > implements Serializable
 
 	protected final int[] dimensions;
 
-	protected final int[] steps;
+	public final int[] steps;
 
-	protected final long[] min;
+	public final long[] min;
 
-	protected final long[] max;
+	public final long[] max;
 
 	private final int numPixels;
 
@@ -142,6 +142,28 @@ public class Cell< A > implements Serializable
 	}
 
 	/**
+	 *
+	 * @param d
+	 *            dimension
+	 * @return maximum
+	 */
+	public long max( final int d )
+	{
+		return max[ d ];
+	}
+
+	/**
+	 * Write the maximum of each dimension into long[].
+	 *
+	 * @param maximum
+	 */
+	public void max( final long[] maximum )
+	{
+		for ( int d = 0; d < n; ++d )
+			maximum[ d ] = max[ d ];
+	}
+
+	/**
 	 * Get the number of pixels in a given dimension <em>d</em>.
 	 *
 	 * @param d
@@ -152,7 +174,7 @@ public class Cell< A > implements Serializable
 	}
 
 	/**
-	 * Write the number of pixels in each dimension into long[].
+	 * Write the number of pixels in each dimension into int[].
 	 *
 	 * @param dim
 	 */
@@ -160,5 +182,26 @@ public class Cell< A > implements Serializable
 	{
 		for ( int d = 0; d < n; ++d )
 			dim[ d ] = dimensions[ d ];
+	}
+
+	/**
+	 * Get the step in a given dimension <em>d</em>.
+	 *
+	 * @param d
+	 */
+	public int step( final int d )
+	{
+		return steps[ d ];
+	}
+
+	/**
+	 * Write the steps in each dimension into int[].
+	 *
+	 * @param step
+	 */
+	public void steps( final int[] step )
+	{
+		for ( int d = 0; d < n; ++d )
+			step[ d ] = steps[ d ];
 	}
 }
